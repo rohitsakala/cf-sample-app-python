@@ -12,7 +12,7 @@ port = int(os.getenv('PORT', '3000'))
 # our base route which just returns a string
 @app.route('/')
 def hello_world():
-    return 'Congratulations! Welcome to the KubeCF Hands on Lab at EU Cloud Foundry Summit.'
+    return 'Congratulations! Welcome to the KubeCF Hands on Lab at EU Cloud Foundry Summit. \n'
 
 @app.route('/create')
 def create():
