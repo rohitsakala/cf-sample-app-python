@@ -12,14 +12,13 @@ port = int(os.getenv('PORT', '3000'))
 # our base route which just returns a string
 @app.route('/')
 def hello_world():
-    return 'Congratulations! Welcome to the KubeCF Hands on Lab at EU Cloud Foundry Summit. \n'
+    return 'Congratulations! Welcome to the KubeCF Hands on Lab at EU Cloud Foundry Summit. \n
+    '
 
 @app.route('/create')
 def create():
     data = json.loads(os.environ['VCAP_SERVICES'])
-    print(data)
-    print(data["volume_mount"]["container_id"])
-    mountPath = data["volume_mount"]["container_id"]
+    mountPath = data["eirini-persi"][0]["volume_mounts"][0]["container_dir"]
     open(mountPath + "volumeTest.txt","x")
     return "Created volumeTest.txt file in " + str(mountPath)
 
