@@ -1,0 +1,7 @@
+---
+applications:
+- name: python-flask-app
+  memory: 256M
+  instances: 1
+  path: .
+  buildpack: python_buildpack

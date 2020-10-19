@@ -1,5 +1,6 @@
 # import dependencies
 import os
+import json
 from flask import Flask
 
 # bootstrap the app
@@ -11,7 +12,16 @@ port = int(os.getenv('PORT', '3000'))
 # our base route which just returns a string
 @app.route('/')
 def hello_world():
-    return 'Congratulations! Welcome to the Swisscom Application Cloud.'
+    return 'Congratulations! Welcome to the KubeCF Hands on Lab at EU Cloud Foundry Summit.'
+
+@app.route('/create')
+def create():
+    data = json.loads(os.environ['VCAP_SERVICES'])
+    print(data)
+    print(data["volume_mount"]["container_id"])
+    mountPath = data["volume_mount"]["container_id"]
+    open(mountPath + "volumeTest.txt","x")
+    return "Created volumeTest.txt file in " + str(mountPath)
 
 # start the app
 if __name__ == '__main__':
