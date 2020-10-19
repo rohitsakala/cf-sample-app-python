@@ -19,7 +19,7 @@ def create():
     data = json.loads(os.environ['VCAP_SERVICES'])
     mountPath = data["eirini-persi"][0]["volume_mounts"][0]["container_dir"]
     open(mountPath + "/volumeTest.txt","w+")
-    return "Created volumeTest.txt file in " + str(mountPath)
+    return "Created volumeTest.txt file in " + str(mountPath) + "\n"
 
 # start the app
 if __name__ == '__main__':
